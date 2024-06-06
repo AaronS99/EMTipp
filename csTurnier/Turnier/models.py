@@ -42,6 +42,16 @@ class extraPoints(models.Model):
         return f'{self.first}'
 
 
+class Event(models.Model):
+    name = models.CharField(max_length=40, default="")
+    date = models.CharField(max_length=40, default="")
+    time = models.CharField(max_length=40, default="")
+    first = models.CharField(max_length=40, default="")
+    second = models.CharField(max_length=40, default="")
+    third = models.CharField(max_length=40, default="")
+    def __str__(self):
+        return f'{self.name}'
+
 class Spieler(models.Model):
     name = models.CharField(max_length=40, default="")
     hundredM = models.CharField(verbose_name="100m Männer", max_length=40, default="", blank=True)
