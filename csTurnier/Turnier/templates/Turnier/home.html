@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Punktestand</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        pre{
+            font-size: larger;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+{% extends 'master.html' %}
+
+
+{% block content %}
+<h1>Ergebnisse</h1>
+<div class="games">
+    <pre>
+{{ string }}
+    </pre>
+</div>
+{% endblock content %}
+</html>

@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+{% block content %}
+<title>Create</title>
+    <div>
+        <a target="_blank" href="https://european-athletics.directus.app/assets/abc99f45-61ea-41a0-b87f-fcd2387a5d2e/ECH2024%20-%20FE%20-%20Athletes%20List%20By%20Event%20and%20SB%20-%20V3.pdf" style="color:blue;">Startliste</a>
+        <br>
+        <a target="_blank" href="https://european-athletics.directus.app/assets/abc99f45-61ea-41a0-b87f-fcd2387a5d2e/ECH2024%20-%20FE%20-%20Athletes%20List%20By%20Event%20and%20SB%20-%20V3.pdf" style="color:blue;">https://european-athletics.directus.app/assets/abc99f45-61ea-41a0-b87f-fcd2387a5d2e/ECH2024%20-%20FE%20-%20Athletes%20List%20By%20Event%20and%20SB%20-%20V3.pdf</a>
+    {% for spieler in object_list %}
+        <p>{{ spieler.name }}</p>
+    {% endfor %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input style="width:100%; padding: 5%; color: white; text-align: center; background-color: black;" type="submit" value="ABSENDEN">
+    </form>
+    </div>
+
+{% endblock %}

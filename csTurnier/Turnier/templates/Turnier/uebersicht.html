@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Übersicht</title>
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            h1{
+                text-align: center;
+            }
+            table, tr, th, td {
+                border: 1px solid;
+                border-collapse: collapse;
+                margin: 1%;
+                text-align: center;
+
+            }     
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            .green {
+                background-color: green;
+            }
+            
+        </style>
+    </head>
+    <body>
+        {% extends 'master.html' %}
+{% block content %}
+    <h1>Übersicht</h1>
+    <table>
+        <tr>
+            <th>Disziplin</th>
+            <th>Resultate</th>
+            {% for spieler in spieler %}
+            <th><a href="{% url 'update' pk=spieler.pk %}">{{ spieler.name }} </a></th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>100m Männer<br>08.06. 22:53</th>
+            <th>
+                {% for result in results %}
+                {{ result.hundredM }} {{ result.xhundredM }} <br>
+                {% endfor %}
+            </th>
+            
+            {% for spieler in spieler %}
+            {% if spieler.hundredM == erster.0.hundredM %}
+            <td style="background-color: gold;">{{ spieler.hundredM }}</td>
+            {% elif spieler.hundredM == zweiter.0.hundredM %}
+            <td style="background-color: silver;">{{ spieler.hundredM }}</td>
+            {% elif spieler.hundredM == dritter.0.hundredM %}
+            <td style="background-color: #CD7F32;">{{ spieler.hundredM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.hundredM }}</td>
+            {% endif %}
+
+            {% endfor %}
+
+        </tr>
+        <tr>
+            <th>100m Frauen<br>09.06. 22:53</th>
+            <th>
+                {% for result in results %}
+                {{ result.hundredW }} {{ result.xhundredW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.hundredW == erster.0.hundredW %}
+            <td style="background-color: gold;">{{ spieler.hundredW }}</td>
+            {% elif spieler.hundredW == zweiter.0.hundredW %}
+            <td style="background-color: silver;">{{ spieler.hundredW }}</td>
+            {% elif spieler.hundredW == dritter.0.hundredW %}
+            <td style="background-color: #CD7F32;">{{ spieler.hundredW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.hundredW }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>200m Männer<br>10.06. 22:50</th>
+            <th>
+                {% for result in results %}
+                {{ result.twoM }} {{ result.xtwoM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.twoM == erster.0.twoM %}
+            <td style="background-color: gold;">{{ spieler.twoM }}</td>
+            {% elif spieler.twoM == zweiter.0.twoM %}
+            <td style="background-color: silver;">{{ spieler.twoM }}</td>
+            {% elif spieler.twoM == dritter.0.twoM %}
+            <td style="background-color: #CD7F32;">{{ spieler.twoM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.twoM }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>200m Frauen<br>11.06. 22:53</th>
+            <th>
+                {% for result in results %}
+                {{ result.twoW }} {{ result.xtwoW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.twoW == erster.0.twoW %}
+            <td style="background-color: gold;">{{ spieler.twoW }}</td>
+            {% elif spieler.twoW == zweiter.0.twoW %}
+            <td style="background-color: silver;">{{ spieler.twoW }}</td>
+            {% elif spieler.twoW == dritter.0.twoW %}
+            <td style="background-color: #CD7F32;">{{ spieler.twoW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.twoW }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>110m Hürden Männer<br>08.06. 22:18</th>
+            <th>
+                {% for result in results %}
+                {{ result.hurdlesM }} {{ result.xhurdlesM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.hurdlesM == erster.0.hurdlesM %}
+            <td style="background-color: gold;">{{ spieler.hurdlesM }}</td>
+            {% elif spieler.hurdlesM == zweiter.0.hurdlesM %}
+            <td style="background-color: silver;">{{ spieler.hurdlesM }}</td>
+            {% elif spieler.hurdlesM == dritter.0.hurdlesM %}
+            <td style="background-color: #CD7F32;">{{ spieler.hurdlesM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.hurdlesM }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>100m Hürden Frauen<br>08.06. 22:08</th>
+            <th>
+                {% for result in results %}
+                {{ result.hurdlesW }} {{ result.xhurdlesW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.hurdlesW == erster.0.hurdlesW %}
+            <td style="background-color: gold;">{{ spieler.hurdlesW }}</td>
+            {% elif spieler.hurdlesW == zweiter.0.hurdlesW %}
+            <td style="background-color: silver;">{{ spieler.hurdlesW }}</td>
+            {% elif spieler.hurdlesW == dritter.0.hurdlesW %}
+            <td style="background-color: #CD7F32;">{{ spieler.hurdlesW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.hurdlesW }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>Zehnkampf<br>11.06. 22:25</th>
+            <th>
+                {% for result in results %}
+                {{ result.deca }} {{ result.xdeca }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.deca == erster.0.deca %}
+            <td style="background-color: gold;">{{ spieler.deca }}</td>
+            {% elif spieler.deca == zweiter.0.deca %}
+            <td style="background-color: silver;">{{ spieler.deca }}</td>
+            {% elif spieler.deca == dritter.0.deca %}
+            <td style="background-color: #CD7F32;">{{ spieler.deca }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.deca }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>Siebenkampf<br>08.06. 21:47</th>
+            <th>
+                {% for result in results %}
+                {{ result.hepta }} {{ result.xhepta }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.hepta == erster.0.hepta %}
+            <td style="background-color: gold;">{{ spieler.hepta }}</td>
+            {% elif spieler.hepta == zweiter.0.hepta %}
+            <td style="background-color: silver;">{{ spieler.hepta }}</td>
+            {% elif spieler.hepta == dritter.0.hepta %}
+            <td style="background-color: #CD7F32;">{{ spieler.hepta }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.hepta }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>400m Männer<br>10.06. 21:40</th>
+            <th>
+                {% for result in results %}
+                {{ result.fourM }} {{ result.xfourM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fourM == erster.0.fourM %}
+            <td style="background-color: gold;">{{ spieler.fourM }}</td>
+            {% elif spieler.fourM == zweiter.0.fourM %}
+            <td style="background-color: silver;">{{ spieler.fourM }}</td>
+            {% elif spieler.fourM == dritter.0.fourM %}
+            <td style="background-color: #CD7F32;">{{ spieler.fourM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fourM }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>400m Frauen<br>10.06. 21:50</th>
+            <th>
+                {% for result in results %}
+                {{ result.fourW }} {{ result.xfourW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fourW == erster.0.fourW %}
+            <td style="background-color: gold;">{{ spieler.fourW }}</td>
+            {% elif spieler.fourW == zweiter.0.fourW %}
+            <td style="background-color: silver;">{{ spieler.fourW }}</td>
+            {% elif spieler.fourW == dritter.0.fourW %}
+            <td style="background-color: #CD7F32;">{{ spieler.fourW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fourW }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>400m Hürden Männer<br>11.06. 21:05</th>
+            <th>
+                {% for result in results %}
+                {{ result.fourHM }} {{ result.xfourHM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fourHM == erster.0.fourHM %}
+            <td style="background-color: gold;">{{ spieler.fourHM }}</td>
+            {% elif spieler.fourHM == zweiter.0.fourHM %}
+            <td style="background-color: silver;">{{ spieler.fourHM }}</td>
+            {% elif spieler.fourHM == dritter.0.fourHM %}
+            <td style="background-color: #CD7F32;">{{ spieler.fourHM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fourHM }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>400m Hürden Frauen<br>11.06. 21:18</th>
+            <th>
+                {% for result in results %}
+                {{ result.fourHW }} {{ result.xfourHW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fourHW == erster.0.fourHW %}
+            <td style="background-color: gold;">{{ spieler.fourHW }}</td>
+            {% elif spieler.fourHW == zweiter.0.fourHW %}
+            <td style="background-color: silver;">{{ spieler.fourHW }}</td>
+            {% elif spieler.fourHW == dritter.0.fourHW %}
+            <td style="background-color: #CD7F32;">{{ spieler.fourHW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fourHW }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>800m Männer<br>09.06. 22:27</th>
+            <th>
+                {% for result in results %}
+                {{ result.eightM }} {{ result.xeightM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.eightM == erster.0.eightM %}
+            <td style="background-color: gold;">{{ spieler.eightM }}</td>
+            {% elif spieler.eightM == zweiter.0.eightM %}
+            <td style="background-color: silver;">{{ spieler.eightM }}</td>
+            {% elif spieler.eightM == dritter.0.eightM %}
+            <td style="background-color: #CD7F32;">{{ spieler.eightM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.eightM }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>800m Frauen<br>12.06. 21:31</th>
+            <th>
+                {% for result in results %}
+                {{ result.eightW }} {{ result.xeightW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.eightW == erster.0.eightW %}
+            <td style="background-color: gold;">{{ spieler.eightW }}</td>
+            {% elif spieler.eightW == zweiter.0.eightW %}
+            <td style="background-color: silver;">{{ spieler.eightW }}</td>
+            {% elif spieler.eightW == dritter.0.eightW %}
+            <td style="background-color: #CD7F32;">{{ spieler.eightW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.eightW }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>1500m Männer<br>12.06. 22:26</th>
+            <th>
+                {% for result in results %}
+                {{ result.fifteenM }} {{ result.xfifteenM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fifteenM == erster.0.fifteenM %}
+            <td style="background-color: gold;">{{ spieler.fifteenM }}</td>
+            {% elif spieler.fifteenM == zweiter.0.fifteenM %}
+            <td style="background-color: silver;">{{ spieler.fifteenM }}</td>
+            {% elif spieler.fifteenM == dritter.0.fifteenM %}
+            <td style="background-color: #CD7F32;">{{ spieler.fifteenM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fifteenM }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>1500m Frauen<br>09.06. 22:36</th>
+            <th>
+                {% for result in results %}
+                {{ result.fifteenW }} {{ result.xfifteenW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fifteenW == erster.0.fifteenW %}
+            <td style="background-color: gold;">{{ spieler.fifteenW }}</td>
+            {% elif spieler.fifteenW == zweiter.0.fifteenW %}
+            <td style="background-color: silver;">{{ spieler.fifteenW }}</td>
+            {% elif spieler.fifteenW == dritter.0.fifteenW %}
+            <td style="background-color: #CD7F32;">{{ spieler.fifteenW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fifteenW }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>5km Männer<br>08.06. 22:28</th>
+            <th>
+                {% for result in results %}
+                {{ result.fiveKM }} {{ result.xfiveKM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fiveKM == erster.0.fiveKM %}
+            <td style="background-color: gold;">{{ spieler.fiveKM }}</td>
+            {% elif spieler.fiveKM == zweiter.0.fiveKM %}
+            <td style="background-color: silver;">{{ spieler.fiveKM }}</td>
+            {% elif spieler.fiveKM == dritter.0.fiveKM %}
+            <td style="background-color: #CD7F32;">{{ spieler.fiveKM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fiveKM }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>5km Frauen<br>07.06. 22:40</th>
+            <th>
+                {% for result in results %}
+                {{ result.fiveKW }} {{ result.xfiveKW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fiveKW == erster.0.fiveKW %}
+            <td style="background-color: gold;">{{ spieler.fiveKW }}</td>
+            {% elif spieler.fiveKW == zweiter.0.fiveKW %}
+            <td style="background-color: silver;">{{ spieler.fiveKW }}</td>
+            {% elif spieler.fiveKW == dritter.0.fiveKW %}
+            <td style="background-color: #CD7F32;">{{ spieler.fiveKW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fiveKW }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>10km Männer<br>12.06. 21:44</th>
+            <th>
+                {% for result in results %}
+                {{ result.tenKM }} {{ result.xtenKM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.tenKM == erster.0.tenKM %}
+            <td style="background-color: gold;">{{ spieler.tenKM }}</td>
+            {% elif spieler.tenKM == zweiter.0.tenKM %}
+            <td style="background-color: silver;">{{ spieler.tenKM }}</td>
+            {% elif spieler.tenKM == dritter.0.tenKM %}
+            <td style="background-color: #CD7F32;">{{ spieler.tenKM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.tenKM }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>10km Frauen<br>11.06. 21:30</th>
+            <th>
+                {% for result in results %}
+                {{ result.tenKW }} {{ result.xtenKW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.tenKW == erster.0.tenKW %}
+            <td style="background-color: gold;">{{ spieler.tenKW }}</td>
+            {% elif spieler.tenKW == zweiter.0.tenKW %}
+            <td style="background-color: silver;">{{ spieler.tenKW }}</td>
+            {% elif spieler.tenKW == dritter.0.tenKW %}
+            <td style="background-color: #CD7F32;">{{ spieler.tenKW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.tenKW }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>3 Hindernis Männer<br>10.06. 22:00</th>
+            <th>
+                {% for result in results %}
+                {{ result.steepleM }} {{ result.xsteepleM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.steepleM == erster.0.steepleM %}
+            <td style="background-color: gold;">{{ spieler.steepleM }}</td>
+            {% elif spieler.steepleM == zweiter.0.steepleM %}
+            <td style="background-color: silver;">{{ spieler.steepleM }}</td>
+            {% elif spieler.steepleM == dritter.0.steepleM %}
+            <td style="background-color: #CD7F32;">{{ spieler.steepleM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.steepleM }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>3 Hindernis Frauen<br>09.06. 22:04</th>
+            <th>
+                {% for result in results %}
+                {{ result.steepleW }} {{ result.xsteepleW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.steepleW == erster.0.steepleW %}
+            <td style="background-color: gold;">{{ spieler.steepleW }}</td>
+            {% elif spieler.steepleW == zweiter.0.steepleW %}
+            <td style="background-color: silver;">{{ spieler.steepleW }}</td>
+            {% elif spieler.steepleW == dritter.0.steepleW %}
+            <td style="background-color: #CD7F32;">{{ spieler.steepleW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.steepleW }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>Hochsprung Männer<br>11.06. 20:35</th>
+            <th>
+                {% for result in results %}
+                {{ result.highM }} {{ result.xhighM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.highM == erster.0.highM %}
+            <td style="background-color: gold;">{{ spieler.highM }}</td>
+            {% elif spieler.highM == zweiter.0.highM %}
+            <td style="background-color: silver;">{{ spieler.highM }}</td>
+            {% elif spieler.highM == dritter.0.highM %}
+            <td style="background-color: #CD7F32;">{{ spieler.highM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.highM }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>Hochsprung Frauen<br>09.06. 20:30</th>
+            <th>
+                {% for result in results %}
+                {{ result.highW }} {{ result.xhighW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.highW == erster.0.highW %}
+            <td style="background-color: gold;">{{ spieler.highW }}</td>
+            {% elif spieler.highW == zweiter.0.highW %}
+            <td style="background-color: silver;">{{ spieler.highW }}</td>
+            {% elif spieler.highW == dritter.0.highW %}
+            <td style="background-color: #CD7F32;">{{ spieler.highW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.highW }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>Stabhochsprung Männer<br>12.06. 20:20</th>
+            <th>
+                {% for result in results %}
+                {{ result.poleVM }} {{ result.xpoleVM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.poleVM == erster.0.poleVM %}
+            <td style="background-color: gold;">{{ spieler.poleVM }}</td>
+            {% elif spieler.poleVM == zweiter.0.poleVM %}
+            <td style="background-color: silver;">{{ spieler.poleVM }}</td>
+            {% elif spieler.poleVM == dritter.0.poleVM %}
+            <td style="background-color: #CD7F32;">{{ spieler.poleVM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.poleVM }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>Stabhochsprung Frauen<br>10.06. 20:15</th>
+            <th>
+                {% for result in results %}
+                {{ result.poleVW }} {{ result.xpoleVW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.poleVW == erster.0.poleVW %}
+            <td style="background-color: gold;">{{ spieler.poleVW }}</td>
+            {% elif spieler.poleVW == zweiter.0.poleVW %}
+            <td style="background-color: silver;">{{ spieler.poleVW }}</td>
+            {% elif spieler.poleVW == dritter.0.poleVW %}
+            <td style="background-color: #CD7F32;">{{ spieler.poleVW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.poleVW }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>Weitsprung Männer<br>08.06. 20:06</th>
+            <th>
+                {% for result in results %}
+                {{ result.longM }} {{ result.xlongM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.longM == erster.0.longM %}
+            <td style="background-color: gold;">{{ spieler.longM }}</td>
+            {% elif spieler.longM == zweiter.0.longM %}
+            <td style="background-color: silver;">{{ spieler.longM }}</td>
+            {% elif spieler.longM == dritter.0.longM %}
+            <td style="background-color: #CD7F32;">{{ spieler.longM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.longM }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>Weitsprung Frauen<br>12.06. 20:54</th>
+            <th>
+                {% for result in results %}
+                {{ result.longW }} {{ result.xlongW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.longW == erster.0.longW %}
+            <td style="background-color: gold;">{{ spieler.longW }}</td>
+            {% elif spieler.longW == zweiter.0.longW %}
+            <td style="background-color: silver;">{{ spieler.longW }}</td>
+            {% elif spieler.longW == dritter.0.longW %}
+            <td style="background-color: #CD7F32;">{{ spieler.longW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.longW }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>Dreisprung Männer<br>11.06. 20:55</th>
+            <th>
+                {% for result in results %}
+                {{ result.tripleM }} {{ result.xtripleM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.tripleM == erster.0.tripleM %}
+            <td style="background-color: gold;">{{ spieler.tripleM }}</td>
+            {% elif spieler.tripleM == zweiter.0.tripleM %}
+            <td style="background-color: silver;">{{ spieler.tripleM }}</td>
+            {% elif spieler.tripleM == dritter.0.tripleM %}
+            <td style="background-color: #CD7F32;">{{ spieler.tripleM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.tripleM }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>Dreisprung Frauen<br>09.06. 21:04</th>
+            <th>
+                {% for result in results %}
+                {{ result.tripleW }} {{ result.xtripleW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.tripleW == erster.0.tripleW %}
+            <td style="background-color: gold;">{{ spieler.tripleW }}</td>
+            {% elif spieler.tripleW == zweiter.0.tripleW %}
+            <td style="background-color: silver;">{{ spieler.tripleW }}</td>
+            {% elif spieler.tripleW == dritter.0.tripleW %}
+            <td style="background-color: #CD7F32;">{{ spieler.tripleW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.tripleW }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>Kugelstoß Männer<br>08.06. 21:02</th>
+            <th>
+                {% for result in results %}
+                {{ result.shotM }} {{ result.xshotM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.shotM == erster.0.shotM %}
+            <td style="background-color: gold;">{{ spieler.shotM }}</td>
+            {% elif spieler.shotM == zweiter.0.shotM %}
+            <td style="background-color: silver;">{{ spieler.shotM }}</td>
+            {% elif spieler.shotM == dritter.0.shotM %}
+            <td style="background-color: #CD7F32;">{{ spieler.shotM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.shotM }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>Kugelstoß Frauen<br>07.06. 21:33</th>
+            <th>
+                {% for result in results %}
+                {{ result.shotW }} {{ result.xshotW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.shotW == erster.0.shotW %}
+            <td style="background-color: gold;">{{ spieler.shotW }}</td>
+            {% elif spieler.shotW == zweiter.0.shotW %}
+            <td style="background-color: silver;">{{ spieler.shotW }}</td>
+            {% elif spieler.shotW == dritter.0.shotW %}
+            <td style="background-color: #CD7F32;">{{ spieler.shotW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.shotW }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>Diskuswurf Männer<br>07.06. 21:00</th>
+            <th>
+                {% for result in results %}
+                {{ result.discM }} {{ result.xdiscM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.discM == erster.0.discM %}
+            <td style="background-color: gold;">{{ spieler.discM }}</td>
+            {% elif spieler.discM == zweiter.0.discM %}
+            <td style="background-color: silver;">{{ spieler.discM }}</td>
+            {% elif spieler.discM == dritter.0.discM %}
+            <td style="background-color: #CD7F32;">{{ spieler.discM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.discM }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>Diskuswurf Frauen<br>08.06. 21:37</th>
+            <th>
+                {% for result in results %}
+                {{ result.discW }} {{ result.xdiscW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.discW == erster.0.discW %}
+            <td style="background-color: gold;">{{ spieler.discW }}</td>
+            {% elif spieler.discW == zweiter.0.discW %}
+            <td style="background-color: silver;">{{ spieler.discW }}</td>
+            {% elif spieler.discW == dritter.0.discW %}
+            <td style="background-color: #CD7F32;">{{ spieler.discW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.discW }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>Hammerwurf Männer<br>09.06. 21:10</th>
+            <th>
+                {% for result in results %}
+                {{ result.hammerM }} {{ result.xhammerM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.hammerM == erster.0.hammerM %}
+            <td style="background-color: gold;">{{ spieler.hammerM }}</td>
+            {% elif spieler.hammerM == zweiter.0.hammerM %}
+            <td style="background-color: silver;">{{ spieler.hammerM }}</td>
+            {% elif spieler.hammerM == dritter.0.hammerM %}
+            <td style="background-color: #CD7F32;">{{ spieler.hammerM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.hammerM }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>Hammerwurf Frauen<br>10.06. 21:33</th>
+            <th>
+                {% for result in results %}
+                {{ result.hammerW }} {{ result.xhammerW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.hammerW == erster.0.hammerW %}
+            <td style="background-color: gold;">{{ spieler.hammerW }}</td>
+            {% elif spieler.hammerW == zweiter.0.hammerW %}
+            <td style="background-color: silver;">{{ spieler.hammerW }}</td>
+            {% elif spieler.hammerW == dritter.0.hammerW %}
+            <td style="background-color: #CD7F32;">{{ spieler.hammerW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.hammerW }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>Speerwurf Männer<br>12.06. 20:28</th>
+            <th>
+                {% for result in results %}
+                {{ result.javM }} {{ result.xjavM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.javM == erster.0.javM %}
+            <td style="background-color: gold;">{{ spieler.javM }}</td>
+            {% elif spieler.javM == zweiter.0.javM %}
+            <td style="background-color: silver;">{{ spieler.javM }}</td>
+            {% elif spieler.javM == dritter.0.javM %}
+            <td style="background-color: #CD7F32;">{{ spieler.javM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.javM }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>Speerwurf Frauen<br>11.06. 21:36</th>
+            <th>
+                {% for result in results %}
+                {{ result.javW }} {{ result.javW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.javW == erster.0.javW %}
+            <td style="background-color: gold;">{{ spieler.javW }}</td>
+            {% elif spieler.javW == zweiter.0.javW %}
+            <td style="background-color: silver;">{{ spieler.javW }}</td>
+            {% elif spieler.javW == dritter.0.javW %}
+            <td style="background-color: #CD7F32;">{{ spieler.javW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.javW }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>4x100m Männer<br>12.06. 22:50</th>
+            <th>
+                {% for result in results %}
+                {{ result.fourxoneM }} {{ result.xfourxoneM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fourxoneM == erster.0.fourxoneM %}
+            <td style="background-color: gold;">{{ spieler.fourxoneM }}</td>
+            {% elif spieler.fourxoneM == zweiter.0.fourxoneM %}
+            <td style="background-color: silver;">{{ spieler.fourxoneM }}</td>
+            {% elif spieler.fourxoneM == dritter.0.fourxoneM %}
+            <td style="background-color: #CD7F32;">{{ spieler.fourxoneM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fourxoneM }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>4x100m Frauen<br>12.06. 22:40</th>
+            <th>
+                {% for result in results %}
+                {{ result.fourxoneW }} {{ result.xfourxoneW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fourxoneW == erster.0.fourxoneW %}
+            <td style="background-color: gold;">{{ spieler.fourxoneW }}</td>
+            {% elif spieler.fourxoneW == zweiter.0.fourxoneW %}
+            <td style="background-color: silver;">{{ spieler.fourxoneW }}</td>
+            {% elif spieler.fourxoneW == dritter.0.fourxoneW %}
+            <td style="background-color: #CD7F32;">{{ spieler.fourxoneW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fourxoneW }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>4x400m Männer<br>12.06. 21:17</th>
+            <th>
+                {% for result in results %}
+                {{ result.fourxfourM }} {{ result.xfourxfourM }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fourxfourM == erster.0.fourxfourM %}
+            <td style="background-color: gold;">{{ spieler.fourxfourM }}</td>
+            {% elif spieler.fourxfourM == zweiter.0.fourxfourM %}
+            <td style="background-color: silver;">{{ spieler.fourxfourM }}</td>
+            {% elif spieler.fourxfourM == dritter.0.fourxfourM %}
+            <td style="background-color: #CD7F32;">{{ spieler.fourxfourM }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fourxfourM }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>4x400m Frauen<br>12.06. 21:05</th>
+            <th>
+                {% for result in results %}
+                {{ result.fourxfourW }} {{ result.xfourxfourW }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fourxfourW == erster.0.fourxfourW %}
+            <td style="background-color: gold;">{{ spieler.fourxfourW }}</td>
+            {% elif spieler.fourxfourW == zweiter.0.fourxfourW %}
+            <td style="background-color: silver;">{{ spieler.fourxfourW }}</td>
+            {% elif spieler.fourxfourW == dritter.0.fourxfourW %}
+            <td style="background-color: #CD7F32;">{{ spieler.fourxfourW }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fourxfourW }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+        <tr>
+            <th>4x400m Mixed<br>07.06. 22:20</th>
+            <th>
+                {% for result in results %}
+                {{ result.fourxfourX }} {{ result.xfourxfourX }} <br>
+                {% endfor %}
+            </th>
+            {% for spieler in spieler %}
+            {% if spieler.fourxfourX == erster.0.fourxfourX %}
+            <td style="background-color: gold;">{{ spieler.fourxfourX }}</td>
+            {% elif spieler.fourxfourX == zweiter.0.fourxfourX %}
+            <td style="background-color: silver;">{{ spieler.fourxfourX }}</td>
+            {% elif spieler.fourxfourX == dritter.0.fourxfourX %}
+            <td style="background-color: #CD7F32;">{{ spieler.fourxfourX }}</td>
+            {% else %}
+            <td style="color: black;">{{ spieler.fourxfourX }}</td>
+            {% endif %}            {% endfor %}
+        </tr>
+
+    </table>
+{% endblock %}
+</body>
+</html>

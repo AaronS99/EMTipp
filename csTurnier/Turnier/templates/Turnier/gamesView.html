@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+    html{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .result{
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;   
+    }
+    .games{
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        border: 2px solid black;
+        font-size: large;
+    }
+    table {
+
+
+    }
+    .outerFlex{
+        display:flex;
+        justify-content: space-evenly;
+        height:auto;
+        border:2px solid red;
+        align-items: stretch;
+        text-align: center;
+    }
+    .flexdiv{
+        border: 2px solid grey;
+        width: 100%;
+    }
+    .xtra{
+        width:100%;
+        border-collapse: collapse;
+        font-size: x-large;
+        border: 2px solid rgba(0, 0, 0, 0.295);
+        text-align: center;
+    }
+    .xtra td, .xtra th{
+        border: 1px solid #ddd
+    }
+    .xtra tr:nth-child(even){background-color: #f2f2f2;}
+    .xtra tr:hover {background-color: #ddd;}
+    .zsf{
+        font-size: x-large;
+        background-color: rgb(228, 226, 226);
+    }
+    .zsf td{
+        padding: 7px;
+        border:1px solid #ddd;
+        background-color: white;
+    }
+    .zsf td:hover {background-color: #ddd;}
+
+
+</style>
+</head>
+<h1>Ergebnisse</h1>
+
+{% block content %}
+<div class="outerFlex">
+<div class="games">
+{% for spiel in spiele %}
+<p class="result"> {{ spiel.playerI }} vs. {{ spiel.playerII }}</p><p> {{spiel.score}}</p>
+{% endfor %}
+</div>
+<div class="flexdiv">
+    <h2>Tabelle nur 1v1</h2>
+<table class="zsf">
+    <tr>
+        <th>Spieler</th>
+        {% for p in player %}
+        <td>{{p.nickname}}</td>
+        {% endfor %} 
+
+    </tr>
+    <tr>
+        <th>Punkte</th>
+        {% for number in count %}
+        <td> {{number}}</td>
+        {% endfor %}
+    </tr>
+</table>
+</div>
+<div class="flexdiv">
+    <h2>Ergebnis Competitive</h2>
+<table class="xtra">
+    {% for x in xtra %}
+    <tr>
+        <th>Spieler</th><th>Punkte</th>
+    </tr>
+    <tr>
+        <td>{{x.first}}</td><td>{{x.firstPoints}}</td>
+    </tr>
+    <tr>
+        <td>{{x.second}}</td><td>{{x.secondPoints}}</td>
+    </tr>
+    <tr>
+        <td>{{x.third}}</td><td>{{x.thirdPoints}}</td>
+    </tr>
+    <tr>
+        <td>{{x.fourth}}</td><td>{{x.fourthPoints}}</td>
+    </tr>
+    <tr>
+        <td>{{x.fith}}</td><td>{{x.fifthPoints}}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+</div>
+<div class="flexdiv">
+    <h2>Tabelle Gesamt</h2>
+<table class="zsf">
+    <tr>
+        <th>Spieler</th>
+        {% for p in player %}
+        <td>{{p.nickname}}</td>
+        {% endfor %} 
+
+    </tr>
+    <tr>
+        <th>Punkte</th>
+        {% for number in countx %}
+        <td> {{number}}</td>
+        {% endfor %}
+    </tr>
+</table>
+</div>
+</div>
+
+
+
+
+{% endblock content %}
+</html>

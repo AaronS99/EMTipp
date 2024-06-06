@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                margin-top: 5%;
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: center;
+            }
+            ul.nav {
+                position: -webkit-sticky;
+                        top: 0;
+                position: sticky;
+                position: fixed;
+                width: 100%;
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li.nav {
+          float: left;
+          width:24%;
+        }
+        
+        li.nav a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        a {
+            color:black;
+            text-decoration: none;
+        }
+        
+        /* Change the link color to #111 (black) on hover */
+        li.nav a:hover {
+          background-color: #111;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="navBar">
+            <ul class="nav">
+                <li class="nav"><a href="{% url 'overview' %}">Übersicht</a></li>
+                <li class="nav"><a href="{% url 'createNew' %}">neuer Eintrag</a></li>
+                <li class="nav"><a href="{% url 'home' %}">Punktestand</a></li>
+                <li class="nav"><a href="{% url 'help' %}">Erklärung</a></li>
+              </ul>
+        </div>
+        {% block content %}
+        {% endblock content %}
+    </body>
+</html>
